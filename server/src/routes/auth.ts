@@ -1,13 +1,13 @@
-import { Router, Request, Response } from 'express'
+
+import { Router } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { prisma } from '../lib/prisma'
 
 const router = Router()
 
-// POST /api/auth/register
-router.post('/register', async (req: Request, res: Response) => {
-  const { email, password, name } = req.body
+router.post('/register', async (req: any, res: any) => {
+    const { email, password, name } = req.body
 
   if (!email || !password) {
     res.status(400).json({ error: 'Email and password are required' })
@@ -41,9 +41,8 @@ router.post('/register', async (req: Request, res: Response) => {
   }
 })
 
-// POST /api/auth/login
-router.post('/login', async (req: Request, res: Response) => {
-  const { email, password } = req.body
+router.post('/login', async (req: any, res: any) => {
+    const { email, password } = req.body
 
   if (!email || !password) {
     res.status(400).json({ error: 'Email and password are required' })
